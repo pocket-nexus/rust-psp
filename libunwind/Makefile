@@ -47,7 +47,7 @@ $(C_OBJLIST) $(S_OBJLIST):
 .PHONY: all clean patch
 
 patch:
-	git submodule update --init --depth 1 -- ./rustc
+	git submodule update --init --checkout --depth 1 -- ./rustc
 	(cd rustc; git submodule update --init --depth 1 -- src/llvm-project)
 	cp -r rustc/src/llvm-project/libunwind/{src,include} .
 	patch -p0 < ./no-sdc1.patch
